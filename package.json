@@ -1,15 +1,18 @@
 {
-  "name": "api_gateway",
+  "name": "check-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "Health-check API for verifying server availability",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "engines": {
+    "node": ">=18"
+  },
+  "author": "Ubed",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2",
-    "pm2": "^5.2.2"
+    "express": "^4.18.2"
   }
 }
