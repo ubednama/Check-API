@@ -13,7 +13,7 @@
   "author": "Ubed",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2",
+    "express": "^5.2.1",
     "helmet": "^8.1.0"
   }
 }
