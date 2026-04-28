@@ -1,10 +1,14 @@
 const express = require('express');
+const helmet = require('helmet');
 
 const app = express();
 
 const PORT = process.env.PORT || 3005;
 
+app.use(helmet());
+
 app.get(['/', '/health'], (req, res) => {
+    res.set('Cache-Control', 'no-store');
     return res.json({ message: 'OK' });
 });
 
@@ -19,3 +23,5 @@ const shutdown = (signal) => {
 
 process.on('SIGTERM', () => shutdown('SIGTERM'));
 process.on('SIGINT', () => shutdown('SIGINT'));
+process.on('unhandledRejection', (err) => console.error('unhandledRejection', err));
+process.on('uncaughtException', (err) => console.error('uncaughtException', err));
