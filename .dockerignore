@@ -1,0 +1,10 @@
+node_modules
+.git
+.github
+.nvmrc
+.editorconfig
+.gitignore
+README.md
+LICENSE
+test
+ecosystem.config.js

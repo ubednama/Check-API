@@ -16,17 +16,5 @@ jobs:
           node-version-file: '.nvmrc'
           cache: 'npm'
       - run: npm ci
-      - name: Smoke test endpoints
-        run: |
-          npm start &
-          SERVER_PID=$!
-          for i in 1 2 3 4 5; do
-            sleep 1
-            if curl -fsS http://localhost:3005/health -o /tmp/health.json; then break; fi
-          done
-          curl -fsS http://localhost:3005/ -o /tmp/root.json
-          cat /tmp/root.json /tmp/health.json
-          grep -q '"message":"OK"' /tmp/root.json
-          grep -q '"message":"OK"' /tmp/health.json
-          kill -TERM $SERVER_PID
-          wait $SERVER_PID 2>/dev/null || true
+      - run: npm audit --audit-level=high
+      - run: npm test
